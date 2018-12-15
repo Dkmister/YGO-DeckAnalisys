@@ -49,9 +49,10 @@ Diff of groups
 """
 def diff_groups(g1,g2):
 	log = open("log.txt","w")
+	lst_diff = []
 	for i in range(0,3):
 		diff_ = difflib.ndiff(g1[i],g2[i])
-		diff_ = (''.join(diff_))		
+		diff_ = (''.join(diff_))
 		if i == 0:
 			log.write("Main Deck Difference:\n")
 			log.write(diff_)
@@ -61,7 +62,12 @@ def diff_groups(g1,g2):
 		if i == 2:
 			log.write("Side Deck Diferrence:\n")
 			log.write(diff_)
-		
+		lst_diff.append(''.join(diff_))
+	return lst_diff
+
+
+def analyze_g2(g1,g2):
+	#TODO 
 # main script
 
 deck1 = sys.argv[1]
@@ -76,4 +82,6 @@ diff = difflib.ndiff(lines_deck1,lines_deck2)
 group1 = return_groups(lines_deck1)
 group2 = return_groups(lines_deck2)
 
-diff_groups(group1,group2)
+d = diff_groups(group1,group2)
+
+
